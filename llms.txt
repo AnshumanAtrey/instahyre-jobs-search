@@ -13,18 +13,19 @@ Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
 
 - Every open job on Instahyre, read live, newest first by posting date.
 - A posting date on every row (Instahyre shows it only in each job page's markup) and a posted-within filter: 24 hours, 3 days, 7 days, 30 days or any period.
-- Experience range on every row and an experience filter: 3 keeps jobs open to 3 years, 0 finds jobs for freshers.
+- Experience range on every row and an experience filter: 3, a range such as 2-5, 5+ or fresher; a job is kept when its range overlaps yours.
 - A search word matches the job title or one of Instahyre's skill tags: python is in 177 titles but in 3,264 jobs' titles or skills (2026-11-08).
-- Indian places as people type them: Bengaluru finds Bangalore, Gurugram finds Gurgaon, Delhi NCR, a state finds its cities, Remote finds Work From Home jobs.
+- Indian places as people type them: Bengaluru finds Bangalore, Gurugram finds Gurgaon, Delhi NCR, a state finds its cities, Remote typed alone finds Work From Home jobs.
 - Company headcount band, founding year and tagline on every row; industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings with full details.
 - Internship stipends in rupees a month, with the internship's length and start date.
 - Job link check: each pasted Instahyre job link comes back open, closed or not found.
+- A search that finds nothing says why: Instahyre has no job with your words inside your other filters, and what to loosen.
 
 ## Input keys
 
 - Skills or titles (searchTerms): one per line; a job matches when its title or one of its skill tags has every word.
-- City or state (location): Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru; Remote or Work from home asks for remote jobs; India finds every job in India.
-- Experience (experienceYears): your years of experience; only jobs whose range holds them. 0 for freshers.
+- City or state (location): Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru; India finds every job in India; Remote or Work from home alone asks for remote jobs, next to a city it changes nothing.
+- Experience (experienceYears): your years of experience as 3, a range such as 2-5, 5+ or fresher; keeps the jobs whose range overlaps yours.
 - Remote or office (workType): remote (Work From Home) or onsite (a city).
 - Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.
@@ -69,7 +70,7 @@ About a minute and a half for the 100 newest jobs, measured locally on 2026-11-0
 
 - The user wants jobs from Instahyre, an Instahyre API, or India tech jobs by skill, city and experience.
 - The user wants the newest Instahyre jobs with their posting date, or a daily feed of jobs posted in the last 24 hours.
-- The user wants jobs open to a number of years of experience, or jobs for freshers.
+- The user wants jobs open to a number or a range of years of experience, or jobs for freshers.
 - The user wants hiring companies in India with their headcount, founding year, industry and Glassdoor ratings.
 - The user wants to check whether Instahyre job links are still open.
 
@@ -87,7 +88,7 @@ About a minute and a half for the 100 newest jobs, measured locally on 2026-11-0
 {
   "searchTerms": ["python developer"],
   "location": ["Bangalore"],
-  "experienceYears": 3,
+  "experienceYears": "3",
   "postedWithin": "30 days",
   "maxJobs": 100
 }

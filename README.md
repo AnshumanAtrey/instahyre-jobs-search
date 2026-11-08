@@ -8,9 +8,9 @@ Use it as an Instahyre API with no login and no API key, an Instahyre job scrape
 
 - **Searches every open job on Instahyre.** On 2026-11-08 Instahyre listed 13,453 open jobs at 3,175 companies, at employers such as Accenture, Amazon, Flipkart, Myntra, Oracle, Deutsche Telekom Digital Labs, Disney, PwC and hundreds of startups.
 - **The posting date Instahyre does not show.** Instahyre's search shows no date and keeps jobs listed for months; every row here has the day the job was posted, read from the job's own page, and the rows come newest first.
-- **Experience on every row.** The years of experience each job asks for (`experienceMin` to `experienceMax`), and a filter that keeps the jobs open to your years, 0 for freshers.
+- **Experience on every row.** The years of experience each job asks for (`experienceMin` to `experienceMax`), and a filter that keeps the jobs open to your years: 3, a range such as 2-5, 5+ or fresher.
 - **Skills match too.** A search word matches the job title or one of the skills Instahyre tags the job with: python is in 177 job titles but in 3,264 jobs' titles or skill tags (2026-11-08).
-- **Indian places as people type them.** Bengaluru finds Bangalore, Gurugram finds Gurgaon, Delhi NCR, a state (Karnataka, Maharashtra) finds its cities, and Remote or Work from home finds Instahyre's remote jobs.
+- **Indian places as people type them.** Bengaluru finds Bangalore, Gurugram finds Gurgaon, Delhi NCR, a state (Karnataka, Maharashtra) finds its cities, and Remote or Work from home typed alone finds Instahyre's remote jobs.
 - **Company facts on every row.** Headcount band, founding year and tagline from Instahyre's company profile, and with full details the industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings.
 - **Checks job links.** Paste Instahyre job links and each comes back open, closed or not found.
 
@@ -77,8 +77,8 @@ Nothing is required. Type a skill or a job title and press Start, or press Start
 | Field | What it does |
 |---|---|
 | Skills or titles (`searchTerms`) | One per line. A job matches when its title, or one of its skill tags, has every word: react also finds React Native. A pasted Instahyre search link works too |
-| City or state (`location`) | Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru, Gurugram. Remote or Work from home asks for remote jobs; India finds every job in India |
-| Experience (`experienceYears`) | Your years of experience: only jobs open to them. 0 finds jobs for freshers |
+| City or state (`location`) | Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru, Gurugram. India finds every job in India. Remote or Work from home typed alone asks for remote jobs; next to a city it changes nothing |
+| Experience (`experienceYears`) | Your years: 3, a range such as 2-5, 5+ for five or more, or fresher. Keeps the jobs whose range overlaps yours |
 | Remote or office (`workType`) | remote for Instahyre's Work From Home jobs, onsite for jobs in a city |
 | Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 2 weeks |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
@@ -95,7 +95,7 @@ Example input:
 {
   "searchTerms": ["python developer"],
   "location": ["Bangalore"],
-  "experienceYears": 3,
+  "experienceYears": "3",
   "postedWithin": "30 days",
   "maxJobs": 100
 }
@@ -168,7 +168,11 @@ Instahyre Jobs Scraper orders jobs by when they were posted, while Instahyre's o
 
 ### How does the experience filter work?
 
-Instahyre Jobs Scraper's Experience (`experienceYears`) keeps the jobs whose experience range holds your years: 3 keeps jobs asking 2-5 or 3-7 years and leaves out jobs asking 5-9. It is Instahyre's own filter, sent to its search, and every row is checked again against its range. Type 0 for jobs open to freshers.
+Instahyre Jobs Scraper's Experience (`experienceYears`) keeps the jobs whose experience range overlaps yours. Type a number, a range, 5+ or fresher: 3 keeps jobs asking 2-5 or 3-7 years and leaves out 5-9; 2-5 keeps every job whose range touches 2 to 5 years, from 0-2 to 5-9; 5+ keeps the jobs open to five years or more; fresher (or 0) keeps the jobs open to freshers. One number also goes to Instahyre's own search, which keeps jobs the same way; a range or 5+ is checked against each job's own range. On 2026-11-08, python developer in Bangalore with 2-5 gave the 20 newest of the 45 jobs whose range touches 2 to 5 years.
+
+### What if a search finds nothing?
+
+Instahyre Jobs Scraper says why in the run's message and in its `OUTPUT` record, and charges for no job. Instahyre's own search takes your words with the place, one number of years, work type, job type and company size, so when it has nothing there the message says so and what to loosen: on 2026-11-08, underwater basket weaving in Bangalore ended "No open job matched on Instahyre in 0 s. Instahyre has no job with your words inside your other filters: try fewer words, or loosen the place, period or other filters." The message also shows how your input was read.
 
 ### Why does a skill find jobs without it in the title?
 
@@ -239,7 +243,7 @@ Instahyre Jobs Scraper reads public job postings and company profiles that anyon
 
 ## Limitations
 
-- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour. A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag, and an internship's page shows no experience.
+- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour. A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag, and an internship's page shows no experience, so with Experience set such an internship is left out.
 - The posting date comes from each job's page, which Instahyre serves only to browsers; a run that cannot read the pages delivers the jobs without a date and says so.
 - Instahyre shows no salary for full-time jobs and no hybrid work type: a job is in a city (onsite) or Work From Home (remote).
 - A word search reads Instahyre's ranking until its pages stop matching; a job that has your words but ranks far below the rest can be missed (1 of 100 python developer jobs on 2026-11-08).

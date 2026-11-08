@@ -103,7 +103,7 @@
             "input": {
                 "searchTerms": [],
                 "location": [],
-                "experienceYears": 0,
+                "experienceYears": "fresher",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,

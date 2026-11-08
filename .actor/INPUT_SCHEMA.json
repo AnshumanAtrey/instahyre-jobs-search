@@ -20,7 +20,7 @@
             "title": "City or state (location)",
             "type": "array",
             "editor": "stringList",
-            "description": "Type the cities or states where the job is, one per line, for example Bangalore, Mumbai, Delhi NCR or Karnataka. Everyday names work too: Bengaluru, Gurugram, Bombay. Remote or Work from home asks for remote jobs. India finds every job in India; a country such as Singapore finds Instahyre's jobs abroad. Leave it empty for anywhere.",
+            "description": "Type the cities or states where the job is, one per line, for example Bangalore, Mumbai, Delhi NCR or Karnataka. Everyday names work too: Bengaluru, Gurugram, Bombay. India finds every job in India; a country such as Singapore finds Instahyre's jobs abroad. Remote or Work from home typed alone asks for Instahyre's Work From Home jobs; next to a city it changes nothing. Leave it empty for anywhere.",
             "placeholderValue": "Bangalore",
             "example": [
                 "Bangalore"
@@ -30,13 +30,10 @@
         },
         "experienceYears": {
             "title": "Experience (experienceYears)",
-            "type": "integer",
-            "editor": "number",
-            "unit": "years",
-            "minimum": 0,
-            "maximum": 40,
-            "description": "Type your experience in years to get only the jobs open to it: 3 finds jobs asking 2-5 or 3-7 years, and 0 finds jobs for freshers. Instahyre gives every job an experience range, and this is its own filter. Leave it empty for every experience level.",
-            "example": 3,
+            "type": "string",
+            "editor": "textfield",
+            "description": "Type your years of experience: a number such as 3, a range such as 2-5, 5+ for five or more, or fresher. A job is kept when the years it asks for overlap yours: 3 keeps jobs asking 2-5 or 3-7 years and leaves out 5-9, while 2-5 keeps 5-9 too. One number also goes to Instahyre's own search, which keeps jobs the same way. Leave it empty for every experience.",
+            "example": "3",
             "nullable": true
         },
         "workType": {
