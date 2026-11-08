@@ -239,7 +239,7 @@ Instahyre Jobs Scraper reads public job postings and company profiles that anyon
 
 ## Limitations
 
-- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour (company pages count with them). A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag, and an internship's page shows no experience.
+- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour. A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag, and an internship's page shows no experience.
 - The posting date comes from each job's page, which Instahyre serves only to browsers; a run that cannot read the pages delivers the jobs without a date and says so.
 - Instahyre shows no salary for full-time jobs and no hybrid work type: a job is in a city (onsite) or Work From Home (remote).
 - A word search reads Instahyre's ranking until its pages stop matching; a job that has your words but ranks far below the rest can be missed (1 of 100 python developer jobs on 2026-11-08).
