@@ -2,7 +2,7 @@
 
 Instahyre jobs scraper and API: search India tech jobs on instahyre.com by skill, city and experience, newest first, and get each job's title, company, city, experience range in years, skills, job category, posting date and link, with the company's headcount band, founding year and tagline on every row. Turn on full details for the description and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings.
 
-Use it as an Instahyre API with no login and no API key, an Instahyre job scraper for a daily India job feed, or a hiring tracker for Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai and remote (Work From Home) jobs, from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, with JSON, CSV or Excel export. Available as an [Apify Actor](https://apify.com/anshumanatrey/instahyre-jobs-search). $0.001 per job, $0.0011 with full details, $0.001 per run start, no login.
+Use it as an Instahyre API with no login and no API key, an Instahyre job scraper for a daily India job feed, or a hiring tracker for Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai and remote (Work From Home) jobs, from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, with JSON, CSV or Excel export. Available as an [Apify Actor](https://apify.com/anshumanatrey/instahyre-jobs-search). $0.0009 per job, $0.00099 with full details, $0.001 per run start, no login.
 
 ## What does it do?
 
@@ -32,22 +32,22 @@ Use it as an Instahyre API with no login and no API key, an Instahyre job scrape
 
 ## How much does it cost to scrape Instahyre jobs?
 
-Pay per event: $1.00 per 1,000 jobs, or $1.10 per 1,000 with full details, plus $0.001 per run start at the default 512 MB of memory. Apify's free $5 monthly credit covers about 4,900 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
+Pay per event: $0.90 per 1,000 jobs, or $0.99 per 1,000 with full details, plus $0.001 per run start at the default 512 MB of memory. Apify's free $5 monthly credit covers about 5,400 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
-| Job | $0.001 | One saved job, and one checked link that is closed or not found |
-| Job with details | $0.0011 | One saved job with full details on |
+| Job | $0.0009 | One saved job, and one checked link that is closed or not found |
+| Job with details | $0.00099 | One saved job with full details on |
 | Run start | $0.001 per GB of memory | Charged by Apify when a run starts: once up to 1 GB, so $0.001 at the default 512 MB |
 
-Instahyre Jobs Scraper's Apify Store header, "from $0.80 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base price in the table, $0.001 a job and $0.0011 with details; SILVER (Scale) pays 10% less, $0.0009 and $0.00099; GOLD (Business) and above pay 20% less, $0.0008 and $0.00088. The run start is a flat fee on every plan and the header never shows it.
+Instahyre Jobs Scraper's Apify Store header, "from $0.72 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base price in the table, $0.0009 a job and $0.00099 with details; SILVER (Scale) pays 10% less, $0.00081 and $0.000891; GOLD (Business) and above pay 20% less, $0.00072 and $0.000792. The run start is a flat fee on every plan and the header never shows it.
 
 | Run (Free and Starter price, default memory) | Cost |
 |---|---|
-| 100 newest jobs | $0.101 |
-| 100 jobs with full details | $0.111 |
-| 1,000 jobs | $1.001 |
-| Every job on Instahyre, 13,453 on 2026-11-08 | $13.454 |
+| 100 newest jobs | $0.091 |
+| 100 jobs with full details | $0.100 |
+| 1,000 jobs | $0.901 |
+| Every job on Instahyre, 13,453 on 2026-11-08 | $12.109 |
 
 Number of jobs (`maxJobs`) and the run start set the most a run can cost, and a run stops at its spending limit with a message saying so.
 
@@ -66,9 +66,9 @@ Every actor on the Apify Store with Instahyre in its title and 5 or more users i
 | s_actors/instahyre-jobs-scraper | 6 | $0.000768 | $0.001 | Yes |
 | rt-solutions/india-tech-jobs-scraper | 6 | $0.0015 | none | Not for Instahyre jobs |
 | neverempty/instahyre-jobs | 5 | $0.002 | none | No |
-| This actor | new | $0.001, $0.0011 with details | $0.001 per GB, $0.001 at 512 MB | Yes, every row |
+| This actor | new | $0.0009, $0.00099 with details | $0.001 per GB, $0.001 at 512 MB | Yes, every row |
 
-Where others are cheaper: s_actors/instahyre-jobs-scraper costs $0.000768 a job with its details, posting dates and Glassdoor ratings included, less than this actor's $0.001; parsebird and getascraper are within a few hundredths of a cent of this actor's plain row, and getascraper's start fee is lower. Where others do more: getascraper and memo23 add an employer email lookup and a change-tracking mode that returns only new or changed jobs; here, schedule a run with Posted in the last set to 24 hours instead.
+Where others are cheaper: s_actors/instahyre-jobs-scraper costs $0.000768 a job with its details, posting dates and Glassdoor ratings included, less than this actor's $0.0009, and getascraper's start fee ($0.00005) is lower than this actor's $0.001. Where others do more: getascraper and memo23 add an employer email lookup and a change-tracking mode that returns only new or changed jobs; here, schedule a run with Posted in the last set to 24 hours instead.
 
 ## Which inputs does it take?
 
@@ -168,7 +168,7 @@ Instahyre Jobs Scraper orders jobs by when they were posted, while Instahyre's o
 
 ### How does the experience filter work?
 
-Instahyre Jobs Scraper's Experience (`experienceYears`) keeps the jobs whose experience range overlaps yours. Type a number, a range, 5+ or fresher: 3 keeps jobs asking 2-5 or 3-7 years and leaves out 5-9; 2-5 keeps every job whose range touches 2 to 5 years, from 0-2 to 5-9; 5+ keeps the jobs open to five years or more; fresher (or 0) keeps the jobs open to freshers. One number also goes to Instahyre's own search, which keeps jobs the same way; a range or 5+ is checked against each job's own range. On 2026-11-08, python developer in Bangalore with 2-5 gave the 20 newest of the 45 jobs whose range touches 2 to 5 years.
+Instahyre Jobs Scraper's Experience (`experienceYears`) keeps the jobs whose experience range overlaps yours. Type a number, a range, 5+ or fresher: 3 keeps jobs asking 2-5 or 3-7 years and leaves out 5-9; 2-5 keeps every job whose range touches 2 to 5 years, from 0-2 to 5-9; 5+ keeps the jobs open to five years or more; fresher (or 0) keeps the jobs open to freshers, internships included: every internship on Instahyre asks for 0-0 years. One number also goes to Instahyre's own search, which keeps jobs the same way; a range or 5+ is checked against each job's own range. On 2026-11-08, python developer in Bangalore with 2-5 gave the 20 newest of the 45 jobs whose range touches 2 to 5 years.
 
 ### What if a search finds nothing?
 
@@ -188,7 +188,7 @@ Instahyre Jobs Scraper needs no Instahyre account and no API key: it reads the p
 
 ### Does it work on Apify's free plan?
 
-Instahyre Jobs Scraper works on Apify's free plan, which pays the base price: $0.001 a job plus the $0.001 run start. The free $5 monthly credit pays for about 4,900 jobs in runs of 100, at $0.101 a run.
+Instahyre Jobs Scraper works on Apify's free plan, which pays the base price: $0.0009 a job plus the $0.001 run start. The free $5 monthly credit pays for about 5,400 jobs in runs of 100, at $0.091 a run.
 
 ### How often should I run it?
 
@@ -243,7 +243,7 @@ Instahyre Jobs Scraper reads public job postings and company profiles that anyon
 
 ## Limitations
 
-- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour. A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag, and an internship's page shows no experience, so with Experience set such an internship is left out.
+- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour. A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag. An internship's page shows no years of experience, so it gets 0-0, the range every Instahyre internship states in its own answer (64 of 64 on 2026-11-08): Experience 0 (fresher) keeps it, and 1 or more leaves it out.
 - The posting date comes from each job's page, which Instahyre serves only to browsers; a run that cannot read the pages delivers the jobs without a date and says so.
 - Instahyre shows no salary for full-time jobs and no hybrid work type: a job is in a city (onsite) or Work From Home (remote).
 - A word search reads Instahyre's ranking until its pages stop matching; a job that has your words but ranks far below the rest can be missed (1 of 100 python developer jobs on 2026-11-08).

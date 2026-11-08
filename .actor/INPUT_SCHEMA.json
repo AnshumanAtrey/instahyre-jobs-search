@@ -97,7 +97,7 @@
             "title": "Full details (includeDetails)",
             "type": "boolean",
             "editor": "checkbox",
-            "description": "Tick to add the full details of each job: the description as text and HTML, and its company's page on Instahyre: industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings when Instahyre shows them. A job with details costs $1.10 per 1,000 instead of $1.00.",
+            "description": "Tick to add the full details of each job: the description as text and HTML, and its company's page on Instahyre: industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings when Instahyre shows them. A job with details costs $0.99 per 1,000 instead of $0.90.",
             "default": false,
             "nullable": true
         },

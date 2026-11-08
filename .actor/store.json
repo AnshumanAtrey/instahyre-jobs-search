@@ -14,12 +14,12 @@
     },
     "defaultRunOptions$comment": "Default 512 MB, measured locally on 2026-11-08 (apify run, engine from the platform/instahyre branch): the example input took 85 s with a peak of 78 MB and 1.6 s of CPU; a search with details 176 s, 82 MB, 4.4 s CPU; 1,000 jobs 379 s, 104 MB, 13 s CPU. Runs wait on Instahyre's limits (20 searches a minute, about 1.5 job answers a second), not on CPU or memory, so more memory does not make them faster. minMemoryMbytes 256. Re-measure on Apify after the first push (time at 256, 512 and 1024 MB, the daily test input, platform usage).",
     "pricing": {
-        "$comment": "2026-11-08. Rule: rules/SEO.md section 16. Main competitor: getascraper/instahyre-jobs-scraper, the most used Instahyre actor (326 u30): $0.00105 a job on FREE, $0.0001 more for its detail enrichment (description, experience), $0.00005 start, no posting date. job is 5% under its job and has the experience range and date on every row; job-details is 4% under its enriched row and adds the company page (industry, website, LinkedIn, Glassdoor ratings). Others: memo23 $0.0015 + $0.0015 details + $0.0001 start (81 u30), s_actors $0.000768 + $0.001 start (6), themineworks $0.002 + $0.005 start (6), parsebird $0.00099 + $0.0007 details + $0.001 start (6). Run start $0.001 per GB: a walk first finds the newest job (about 30 answers, 20 s), which a 1-job run would not pay for. Margin (owner: platform cost under 10% of 0.8 x price at every tier), local runs of 2026-11-08 at 512 MB and $0.20 per CU: 100 newest jobs 85 s, 97%; 100 jobs with details 176 s, 94%; 1,000 jobs 379 s, 99%; a 1-job search 8 s, 86% (under the 90% target, cents in absolute terms). Re-measure each on Apify after the first push. Gentle ladder per the owner's decision of 2026-10-29. apply false until prices measured on Apify replace these (BRIEF-2 section 4): once a first set is live, CI applies decreases only (store-metadata.mjs), and the measured run start may cost more than $0.001; unpriced, the measuring runs are not cut by the account credit cap either. isPublic stays false until the priced proof run.",
+        "$comment": "2026-11-08, by the scratch price_ladder.py. Owner's decision of 2026-11-08: the house rule goes live first, the 80-150% markup ladder is kept as a cut. House rule (rules/SEO.md 16): each event 5-15% under getascraper~instahyre-jobs-scraper (320 users in 30 days; its record of 2026-08-26; GET /v2/acts/getascraper~instahyre-jobs-scraper on 2026-11-08) at every public tier, on the Gentle ladder of SEO.md 16.7: job $0.0009/$0.0009/$0.00081/$0.00072/$0.00072/$0.00072 against $0.00105/$0.00096/$0.00088/$0.00079, job-details $0.00099/$0.00099/$0.000891/$0.000792/$0.000792/$0.000792 against $0.00115/$0.00105/$0.00096/$0.00086 (its row plus its detail enrichment), run start $0.001 per GB against its $0.00005. Margin (SEO.md 16.4) from local runs of 2026-11-08 (wall time plus 5 s assumed for Apify's container start) at 512 MB (local:r2-01-example, local:r2-02-python-dev-bangalore, local:r2-06-python-bangalore-2-5, local:fix-03b-freshers, local:03-data-analyst-remote-7d, local:12-large-1000, local:04b-sales-ops-mumbai-details): cost $0.000014729 a job and $0.00004232 a job with details plus $0.0015365 a run on FREE unit prices; lowest margin of a run 66% (the smallest run). apply false until the margins are measured on Apify: once a first set is live, CI applies decreases only (store-metadata.mjs). isPublic stays false until the owner's check.",
         "apply": false,
         "pricingInfos": [
             {
                 "pricingModel": "PAY_PER_EVENT",
-                "reasonForChange": "First pricing",
+                "reasonForChange": "First pricing: 5-15% under the main Instahyre actor, Store discounts",
                 "pricingPerEvent": {
                     "actorChargeEvents": {
                         "job": {
@@ -28,22 +28,22 @@
                             "isPrimaryEvent": true,
                             "eventTieredPricingUsd": {
                                 "FREE": {
-                                    "tieredEventPriceUsd": 0.001
-                                },
-                                "BRONZE": {
-                                    "tieredEventPriceUsd": 0.001
-                                },
-                                "SILVER": {
                                     "tieredEventPriceUsd": 0.0009
                                 },
+                                "BRONZE": {
+                                    "tieredEventPriceUsd": 0.0009
+                                },
+                                "SILVER": {
+                                    "tieredEventPriceUsd": 0.00081
+                                },
                                 "GOLD": {
-                                    "tieredEventPriceUsd": 0.0008
+                                    "tieredEventPriceUsd": 0.00072
                                 },
                                 "PLATINUM": {
-                                    "tieredEventPriceUsd": 0.0008
+                                    "tieredEventPriceUsd": 0.00072
                                 },
                                 "DIAMOND": {
-                                    "tieredEventPriceUsd": 0.0008
+                                    "tieredEventPriceUsd": 0.00072
                                 }
                             }
                         },
@@ -52,22 +52,22 @@
                             "eventDescription": "One saved job row with full details on: everything in a Job row plus the description as text and HTML, and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings when Instahyre shows them.",
                             "eventTieredPricingUsd": {
                                 "FREE": {
-                                    "tieredEventPriceUsd": 0.0011
-                                },
-                                "BRONZE": {
-                                    "tieredEventPriceUsd": 0.0011
-                                },
-                                "SILVER": {
                                     "tieredEventPriceUsd": 0.00099
                                 },
+                                "BRONZE": {
+                                    "tieredEventPriceUsd": 0.00099
+                                },
+                                "SILVER": {
+                                    "tieredEventPriceUsd": 0.000891
+                                },
                                 "GOLD": {
-                                    "tieredEventPriceUsd": 0.00088
+                                    "tieredEventPriceUsd": 0.000792
                                 },
                                 "PLATINUM": {
-                                    "tieredEventPriceUsd": 0.00088
+                                    "tieredEventPriceUsd": 0.000792
                                 },
                                 "DIAMOND": {
-                                    "tieredEventPriceUsd": 0.00088
+                                    "tieredEventPriceUsd": 0.000792
                                 }
                             }
                         },

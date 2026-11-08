@@ -25,7 +25,7 @@ Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
 
 - Skills or titles (searchTerms): one per line; a job matches when its title or one of its skill tags has every word.
 - City or state (location): Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru; India finds every job in India; Remote or Work from home alone asks for remote jobs, next to a city it changes nothing.
-- Experience (experienceYears): your years of experience as 3, a range such as 2-5, 5+ or fresher; keeps the jobs whose range overlaps yours.
+- Experience (experienceYears): your years of experience as 3, a range such as 2-5, 5+ or fresher; keeps the jobs whose range overlaps yours. Every internship asks for 0-0 years (its page shows none), so fresher keeps internships.
 - Remote or office (workType): remote (Work From Home) or onsite (a city).
 - Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.
@@ -40,20 +40,20 @@ Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
 
 PAY_PER_EVENT model, platform usage included:
 
-- Job: $0.001 per saved job ($1.00 per 1,000), and per checked link that is closed or not found
-- Job with details: $0.0011 per saved job with full details on ($1.10 per 1,000)
+- Job: $0.0009 per saved job ($0.90 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.00099 per saved job with full details on ($0.99 per 1,000)
 - Run start: $0.001 per GB of memory, charged by Apify when a run starts, so $0.001 at the default 512 MB
 
-Instahyre Jobs Scraper's Apify Store header, "from $0.80 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.001 a job and $0.0011 with details; SILVER (Scale) pays 10% less, $0.0009 and $0.00099; GOLD (Business) and above pay 20% less, $0.0008 and $0.00088. The run start is a flat fee on every plan.
+Instahyre Jobs Scraper's Apify Store header, "from $0.72 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.0009 a job and $0.00099 with details; SILVER (Scale) pays 10% less, $0.00081 and $0.000891; GOLD (Business) and above pay 20% less, $0.00072 and $0.000792. The run start is a flat fee on every plan.
 
 Typical costs (Free and Starter price, default memory):
 
-- 100 newest jobs: $0.101
-- 100 jobs with full details: $0.111
-- 1,000 jobs: $1.001
-- Every job on Instahyre, 13,453 on 2026-11-08: $13.454
+- 100 newest jobs: $0.091
+- 100 jobs with full details: $0.100
+- 1,000 jobs: $0.901
+- Every job on Instahyre, 13,453 on 2026-11-08: $12.109
 
-Apify's free $5 monthly credit covers about 4,900 jobs in runs of 100.
+Apify's free $5 monthly credit covers about 5,400 jobs in runs of 100.
 
 ## Speed
 
@@ -137,7 +137,7 @@ From a local run of the example input (`{"maxJobs": 100}`) on 2026-11-08: the se
 
 - vs getascraper/instahyre-jobs-scraper ($0.00105 per job, $0.00115 with its details, 326 users in 30 days): no posting date and experience only with its details; this actor gives the date and the experience range on every row at $0.001, and orders by posting date.
 - vs s_actors/instahyre-jobs-scraper ($0.000768 per job with its details): also dates every job and shows Glassdoor ratings, at a lower price; this actor adds skill-tag matching, Indian place names and states, internship stipends and the job link check.
-- vs memo23/instahyre-jobs-scraper ($0.0015 per job, $0.003 with its details): posting dates and experience only with its paid details; this actor gives both on every row at $0.001.
+- vs memo23/instahyre-jobs-scraper ($0.0015 per job, $0.003 with its details): posting dates and experience only with its paid details; this actor gives both on every row at $0.0009.
 
 ## Sibling actors
 
