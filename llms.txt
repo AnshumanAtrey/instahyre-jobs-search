@@ -40,24 +40,24 @@ Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
 
 PAY_PER_EVENT model, platform usage included:
 
-- Job: $0.0009 per saved job ($0.90 per 1,000), and per checked link that is closed or not found
-- Job with details: $0.00099 per saved job with full details on ($0.99 per 1,000)
-- Run start: $0.001 per GB of memory, charged by Apify when a run starts, so $0.001 at the default 512 MB
+- Job: $0.00019 per saved job ($0.19 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.00023 per saved job with full details on ($0.23 per 1,000)
+- Run start: $0.013 per GB of memory, charged by Apify when a run starts, so $0.013 at the default 512 MB
 
-Instahyre Jobs Scraper's Apify Store header, "from $0.72 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.0009 a job and $0.00099 with details; SILVER (Scale) pays 10% less, $0.00081 and $0.000891; GOLD (Business) and above pay 20% less, $0.00072 and $0.000792. The run start is a flat fee on every plan.
+Instahyre Jobs Scraper's Apify Store header, "from $0.11 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE users (Apify's Free plan) pay the base prices above, $0.00019 a job and $0.00023 with details; BRONZE (Starter) pays $0.00018 and $0.00022; SILVER (Scale) $0.00014 and $0.00017; GOLD (Business) $0.00011 and $0.00013; PLATINUM and DIAMOND $0.000097 and $0.00013. The run start is a flat fee on every plan.
 
-Typical costs (Free and Starter price, default memory):
+Typical costs (Free plan price, default memory):
 
-- 100 newest jobs: $0.091
-- 100 jobs with full details: $0.100
-- 1,000 jobs: $0.901
-- Every job on Instahyre, 13,453 on 2026-11-08: $12.109
+- 100 newest jobs: $0.032
+- 100 jobs with full details: $0.036
+- 1,000 jobs: $0.203
+- Every job on Instahyre, 13,453 on 2026-11-08: $2.569
 
-Apify's free $5 monthly credit covers about 5,400 jobs in runs of 100.
+Apify's free $5 monthly credit covers about 15,600 jobs in runs of 100.
 
 ## Speed
 
-About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08 at 512 MB: the empty form 85 s, 1,000 newest jobs 379 s (2.6 jobs a second), python developer in Bangalore 80 s, every Flipkart job 49 s, jobs for freshers 83 s, remote data analyst jobs from the last 7 days 8 s, sales or operations jobs in Mumbai with full details 176 s. Instahyre limits each address to about 20 searches a minute and 250 an hour and about 1,000 job answers an hour; when the answers run out, a run reads the jobs' own pages instead.
+About three and a half minutes for the 100 newest jobs, measured on Apify on 2026-11-08 at the default 512 MB: the empty form 215 s, python developer in Bangalore 86 s, jobs for freshers 128 s, sales or operations jobs in Mumbai 122 s and 173 s with full details, data scientist jobs asking 8 or more years from the last 30 days 209 s, 500 jobs 970 s. More memory does not make a run faster: 207 s at 1,024 MB for the same 100 jobs. Instahyre limits each address to about 20 searches a minute and 250 an hour and about 1,000 job answers an hour; when the answers run out, a run reads the jobs' own pages instead.
 
 ## How to call it
 
@@ -80,7 +80,7 @@ About a minute and a half for the 100 newest jobs, measured locally on 2026-11-0
 - The user needs hybrid jobs: Instahyre marks a job onsite (a city) or remote (Work From Home) only.
 - The user needs jobs from Naukri, LinkedIn or other boards: this actor reads Instahyre only.
 - The user wants only new or changed jobs since the last run without scheduling: getascraper/instahyre-jobs-scraper and memo23/instahyre-jobs-scraper have a change-tracking mode; here, schedule a run with postedWithin set to 24 hours.
-- The user wants the lowest price per job: s_actors/instahyre-jobs-scraper costs $0.000768 a job with its details.
+- The user runs a few jobs at a time: below 21 jobs a run, this actor's $0.013 run start makes s_actors/instahyre-jobs-scraper ($0.000768 a job with its details, $0.001 start) cheaper.
 
 ## Sample input
 
@@ -137,7 +137,7 @@ From a local run of the example input (`{"maxJobs": 100}`) on 2026-11-08: the se
 
 - vs getascraper/instahyre-jobs-scraper ($0.00105 per job, $0.00115 with its details, 326 users in 30 days): no posting date and experience only with its details; this actor gives the date and the experience range on every row at $0.001, and orders by posting date.
 - vs s_actors/instahyre-jobs-scraper ($0.000768 per job with its details): also dates every job and shows Glassdoor ratings, at a lower price; this actor adds skill-tag matching, Indian place names and states, internship stipends and the job link check.
-- vs memo23/instahyre-jobs-scraper ($0.0015 per job, $0.003 with its details): posting dates and experience only with its paid details; this actor gives both on every row at $0.0009.
+- vs memo23/instahyre-jobs-scraper ($0.0015 per job, $0.003 with its details): posting dates and experience only with its paid details; this actor gives both on every row at $0.00019.
 
 ## Sibling actors
 

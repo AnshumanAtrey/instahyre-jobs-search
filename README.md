@@ -2,7 +2,7 @@
 
 Instahyre jobs scraper and API: search India tech jobs on instahyre.com by skill, city and experience, newest first, and get each job's title, company, city, experience range in years, skills, job category, posting date and link, with the company's headcount band, founding year and tagline on every row. Turn on full details for the description and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings.
 
-Use it as an Instahyre API with no login and no API key, an Instahyre job scraper for a daily India job feed, or a hiring tracker for Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai and remote (Work From Home) jobs, from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, with JSON, CSV or Excel export. Available as an [Apify Actor](https://apify.com/anshumanatrey/instahyre-jobs-search). $0.0009 per job, $0.00099 with full details, $0.001 per run start, no login.
+Use it as an Instahyre API with no login and no API key, an Instahyre job scraper for a daily India job feed, or a hiring tracker for Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai and remote (Work From Home) jobs, from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, with JSON, CSV or Excel export. Available as an [Apify Actor](https://apify.com/anshumanatrey/instahyre-jobs-search). $0.00019 per job, $0.00023 with full details, $0.013 per run start, no login.
 
 ## What does it do?
 
@@ -21,7 +21,7 @@ Use it as an Instahyre API with no login and no API key, an Instahyre job scrape
 - **Experience range, skills, category and company headcount on the plain row,** with no extra charge. getascraper, memo23 and parsebird add the experience range only with their paid detail option; s_actors includes it in its price.
 - **Matches words the way buyers mean them.** Instahyre's own search for python developer lists 6,439 jobs, and only 100 of them have both words in their title or in one skill tag (2026-11-08); this actor keeps the jobs that have every word of your search in their title or a skill tag, and reads Instahyre's ranking only as far as it keeps matching.
 - **Internship stipends.** The one pay figure Instahyre shows: an internship's monthly stipend in rupees, its length in months and its start date.
-- **You pay for what you get.** One charge per delivered row plus a $0.001 run start, and a spending limit stops the run cleanly with the jobs it paid for.
+- **You pay for what you get.** One charge per delivered row plus a $0.013 run start, and a spending limit stops the run cleanly with the jobs it paid for.
 
 ## When should I use it?
 
@@ -32,22 +32,22 @@ Use it as an Instahyre API with no login and no API key, an Instahyre job scrape
 
 ## How much does it cost to scrape Instahyre jobs?
 
-Pay per event: $0.90 per 1,000 jobs, or $0.99 per 1,000 with full details, plus $0.001 per run start at the default 512 MB of memory. Apify's free $5 monthly credit covers about 5,400 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
+Pay per event: $0.19 per 1,000 jobs, or $0.23 per 1,000 with full details, plus $0.013 per run start at the default 512 MB of memory. Apify's free $5 monthly credit covers about 15,600 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
-| Job | $0.0009 | One saved job, and one checked link that is closed or not found |
-| Job with details | $0.00099 | One saved job with full details on |
-| Run start | $0.001 per GB of memory | Charged by Apify when a run starts: once up to 1 GB, so $0.001 at the default 512 MB |
+| Job | $0.00019 | One saved job, and one checked link that is closed or not found |
+| Job with details | $0.00023 | One saved job with full details on |
+| Run start | $0.013 per GB of memory | Charged by Apify when a run starts: once up to 1 GB, so $0.013 at the default 512 MB. It covers what a run costs before its first job |
 
-Instahyre Jobs Scraper's Apify Store header, "from $0.72 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base price in the table, $0.0009 a job and $0.00099 with details; SILVER (Scale) pays 10% less, $0.00081 and $0.000891; GOLD (Business) and above pay 20% less, $0.00072 and $0.000792. The run start is a flat fee on every plan and the header never shows it.
+Instahyre Jobs Scraper's Apify Store header, "from $0.11 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE users (Apify's Free plan) pay the base price in the table, $0.00019 a job and $0.00023 with details; BRONZE (Starter) pays $0.00018 and $0.00022; SILVER (Scale) $0.00014 and $0.00017; GOLD (Business) $0.00011 and $0.00013; PLATINUM and DIAMOND $0.000097 and $0.00013. The run start is a flat fee on every plan and the header never shows it.
 
-| Run (Free and Starter price, default memory) | Cost |
+| Run (Free plan price, default memory) | Cost |
 |---|---|
-| 100 newest jobs | $0.091 |
-| 100 jobs with full details | $0.100 |
-| 1,000 jobs | $0.901 |
-| Every job on Instahyre, 13,453 on 2026-11-08 | $12.109 |
+| 100 newest jobs | $0.032 |
+| 100 jobs with full details | $0.036 |
+| 1,000 jobs | $0.203 |
+| Every job on Instahyre, 13,453 on 2026-11-08 | $2.569 |
 
 Number of jobs (`maxJobs`) and the run start set the most a run can cost, and a run stops at its spending limit with a message saying so.
 
@@ -66,9 +66,9 @@ Every actor on the Apify Store with Instahyre in its title and 5 or more users i
 | s_actors/instahyre-jobs-scraper | 6 | $0.000768 | $0.001 | Yes |
 | rt-solutions/india-tech-jobs-scraper | 6 | $0.0015 | none | Not for Instahyre jobs |
 | neverempty/instahyre-jobs | 5 | $0.002 | none | No |
-| This actor | new | $0.0009, $0.00099 with details | $0.001 per GB, $0.001 at 512 MB | Yes, every row |
+| This actor | new | $0.00019, $0.00023 with details | $0.013 per GB, $0.013 at 512 MB | Yes, every row |
 
-Where others are cheaper: s_actors/instahyre-jobs-scraper costs $0.000768 a job with its details, posting dates and Glassdoor ratings included, less than this actor's $0.0009, and getascraper's start fee ($0.00005) is lower than this actor's $0.001. Where others do more: getascraper and memo23 add an employer email lookup and a change-tracking mode that returns only new or changed jobs; here, schedule a run with Posted in the last set to 24 hours instead.
+Where others are cheaper: this actor's run start, $0.013, is the highest of these actors (getascraper $0.00005, memo23 $0.0001, s_actors and parsebird $0.001, themineworks $0.005), so a run of fewer than 21 jobs costs less on s_actors/instahyre-jobs-scraper, which includes its details, posting dates and Glassdoor ratings at $0.000768 a job; from 21 jobs a run on, this actor costs less than any of them. Where others do more: getascraper and memo23 add an employer email lookup and a change-tracking mode that returns only new or changed jobs; here, schedule a run with Posted in the last set to 24 hours instead.
 
 ## Which inputs does it take?
 
@@ -154,7 +154,7 @@ Full details add `description`, `descriptionHtml`, `companySlug`, `companyWebsit
 
 ## How fast is it?
 
-About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08 at 512 MB (Apify times follow after the first deploy): the empty form took 85 s, 1,000 newest jobs 379 s (2.6 jobs a second, peak 104 MB of memory), python developer in Bangalore 80 s (66 jobs), every Flipkart job 49 s (46 jobs), jobs open to freshers 83 s (30 jobs), remote data analyst jobs from the last 7 days 8 s, and sales or operations jobs in Mumbai with full details 176 s (100 jobs). Instahyre limits each address, not each run: about 20 searches a minute and 250 an hour, and about 1,000 job answers an hour. When the job answers run out, a run reads the jobs' own pages instead, which carried the 1,000-job run above. More memory does not make a run faster.
+About three and a half minutes for the 100 newest jobs, measured on Apify on 2026-11-08 at the default 512 MB: the empty form took 215 s, python developer in Bangalore 86 s (66 jobs), jobs open to freshers 128 s (100 jobs), sales or operations jobs in Mumbai 122 s (100 jobs) and 173 s with full details, data scientist jobs asking 8 or more years from the last 30 days 209 s (44 jobs), and 500 jobs 970 s. Instahyre limits each address, not each run: about 20 searches a minute and 250 an hour, and about 1,000 job answers an hour; the 500-job run met both, and a run then reads the jobs' own pages instead of their answers. More memory does not make a run faster: the runs used 62 to 107 MB, and the same 100 newest jobs took 207 s at 1,024 MB.
 
 ## Common questions
 
@@ -188,7 +188,7 @@ Instahyre Jobs Scraper needs no Instahyre account and no API key: it reads the p
 
 ### Does it work on Apify's free plan?
 
-Instahyre Jobs Scraper works on Apify's free plan, which pays the base price: $0.0009 a job plus the $0.001 run start. The free $5 monthly credit pays for about 5,400 jobs in runs of 100, at $0.091 a run.
+Instahyre Jobs Scraper works on Apify's free plan, which pays the base price: $0.00019 a job plus the $0.013 run start. The free $5 monthly credit pays for about 15,600 jobs in runs of 100, at $0.032 a run.
 
 ### How often should I run it?
 
