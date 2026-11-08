@@ -132,7 +132,7 @@
                     "status": {
                         "type": "string",
                         "title": "Still open? (status)",
-                        "description": "open for every search result (read live during the run). For a checked link: open, closed (Instahyre no longer shows the job) or not found (no job with that number).",
+                        "description": "open for every search result (read live during the run). For a checked link: open, closed (Instahyre does not show the job: it closed, or Instahyre has not published it yet) or not found (no job with that number).",
                         "example": "open"
                     },
                     "platform": {

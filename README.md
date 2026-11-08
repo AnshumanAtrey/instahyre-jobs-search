@@ -16,7 +16,7 @@ Use it as an Instahyre API with no login and no API key, an Instahyre job scrape
 
 ## How is it different from other Instahyre scrapers?
 
-- **Newest first, for real.** Instahyre orders its search by its own score and keeps jobs listed for months, so its first page mixes this week's jobs with jobs from 2023. This actor orders by when each job was posted. Instahyre gives job numbers in the order jobs are posted (on 420 job pages from 2018 to today, the date never went back as the number grew), so the newest jobs are read first and dated from their pages.
+- **Newest first, for real.** Instahyre orders its search by its own score and keeps jobs listed for months. On 2026-11-08 the first page of instahyre.com for python developer jobs in Bangalore was a median 117 days old (its oldest 626 days), and for jobs open to freshers a median 20 days (its oldest 1,322 days); the first 20 rows of this actor for the same searches were a median 34 days and 1 day old. Instahyre gives job numbers in the order jobs are posted (on 420 job pages from 2018 to today, the date never went back as the number grew), so the newest jobs are read first and dated from their pages.
 - **A posting date on every row, and a posted-within filter.** Of the 9 Instahyre actors with 5 or more users (table below), s_actors gives the posting date on every job, and memo23 and parsebird with their paid details.
 - **Experience range, skills, category and company headcount on the plain row,** with no extra charge. getascraper, memo23 and parsebird add the experience range only with their paid detail option; s_actors includes it in its price.
 - **Matches words the way buyers mean them.** Instahyre's own search for python developer lists 6,439 jobs, and only 100 of them have both words in their title or in one skill tag (2026-11-08); this actor keeps the jobs that have every word of your search in their title or a skill tag, and reads Instahyre's ranking only as far as it keeps matching.
@@ -154,7 +154,7 @@ Full details add `description`, `descriptionHtml`, `companySlug`, `companyWebsit
 
 ## How fast is it?
 
-About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08 (Apify times follow after the first deploy): the empty form took 85 s, python developer in Bangalore 80 s (65 jobs), data analyst jobs that are remote and from the last 7 days 8 s, and sales or operations jobs in Mumbai with full details 177 s. Instahyre answers one address 20 searches a minute and about one and a half job answers a second, so a run waits on those limits, not on memory: more memory does not make it faster.
+About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08 at 512 MB (Apify times follow after the first deploy): the empty form took 85 s, 1,000 newest jobs 379 s (2.6 jobs a second, peak 104 MB of memory), python developer in Bangalore 80 s (66 jobs), every Flipkart job 49 s (46 jobs), jobs open to freshers 83 s (30 jobs), remote data analyst jobs from the last 7 days 8 s, and sales or operations jobs in Mumbai with full details 176 s (100 jobs). Instahyre limits each address, not each run: about 20 searches a minute and 250 an hour, and about 1,000 job answers an hour. When the job answers run out, a run reads the jobs' own pages instead, which carried the 1,000-job run above. More memory does not make a run faster.
 
 ## Common questions
 
@@ -239,7 +239,7 @@ Instahyre Jobs Scraper reads public job postings and company profiles that anyon
 
 ## Limitations
 
-- Instahyre limits each address to 20 searches a minute and about 250 an hour, and to about one and a half job answers a second with an hourly cap of its own. A run waits for these limits, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short; very big runs (thousands of jobs) take a while.
+- Instahyre limits each address to about 20 searches a minute and 250 an hour, and to about one and a half job answers a second and 1,000 an hour (company pages count with them). A run waits for these limits, reads job pages when the answers run out, says in its message how far it got, and marks the `OUTPUT` record partial when a limit cut it short. Jobs read from their pages have no agency, stipend or relocation flag, and an internship's page shows no experience.
 - The posting date comes from each job's page, which Instahyre serves only to browsers; a run that cannot read the pages delivers the jobs without a date and says so.
 - Instahyre shows no salary for full-time jobs and no hybrid work type: a job is in a city (onsite) or Work From Home (remote).
 - A word search reads Instahyre's ranking until its pages stop matching; a job that has your words but ranks far below the rest can be missed (1 of 100 python developer jobs on 2026-11-08).

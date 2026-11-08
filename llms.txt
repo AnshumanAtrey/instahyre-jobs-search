@@ -56,7 +56,7 @@ Apify's free $5 monthly credit covers about 4,900 jobs in runs of 100.
 
 ## Speed
 
-About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08: the empty form 85 s, python developer in Bangalore 80 s, remote data analyst jobs from the last 7 days 8 s, sales or operations jobs in Mumbai with full details 177 s. Instahyre answers one address 20 searches a minute and about one and a half job answers a second, so runs wait on those limits.
+About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08 at 512 MB: the empty form 85 s, 1,000 newest jobs 379 s (2.6 jobs a second), python developer in Bangalore 80 s, every Flipkart job 49 s, jobs for freshers 83 s, remote data analyst jobs from the last 7 days 8 s, sales or operations jobs in Mumbai with full details 176 s. Instahyre limits each address to about 20 searches a minute and 250 an hour and about 1,000 job answers an hour; when the answers run out, a run reads the jobs' own pages instead.
 
 ## How to call it
 
