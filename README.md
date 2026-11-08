@@ -80,7 +80,7 @@ Nothing is required. Type a skill or a job title and press Start, or press Start
 | City or state (`location`) | Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru, Gurugram. India finds every job in India. Remote or Work from home typed alone asks for remote jobs; next to a city it changes nothing |
 | Experience (`experienceYears`) | Your years: 3, a range such as 2-5, 5+ for five or more, or fresher. Keeps the jobs whose range overlaps yours |
 | Remote or office (`workType`) | remote for Instahyre's Work From Home jobs, onsite for jobs in a city |
-| Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 2 weeks |
+| Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days (the default), any time, or your own period such as 2 weeks |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
 | Full details (`includeDetails`) | Adds the description as text and HTML and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings |
 | Leave out words (`excludeTerms`) | Drops jobs whose title has these words, such as senior or intern |

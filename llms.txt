@@ -27,7 +27,7 @@ Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
 - City or state (location): Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru; India finds every job in India; Remote or Work from home alone asks for remote jobs, next to a city it changes nothing.
 - Experience (experienceYears): your years of experience as 3, a range such as 2-5, 5+ or fresher; keeps the jobs whose range overlaps yours. Every internship asks for 0-0 years (its page shows none), so fresher keeps internships.
 - Remote or office (workType): remote (Work From Home) or onsite (a city).
-- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
+- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days (the default), any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.
 - Full details (includeDetails): adds the description and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings.
 - Leave out words (excludeTerms): drops jobs whose title has these words.
