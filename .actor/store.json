@@ -1,5 +1,6 @@
 {
     "$comment": "Listing metadata, applied by scripts/store-metadata.mjs in CI (manager/rules/SEO.md). Add actorId here after the first deploy creates the actor, so CI updates it by ID and a rename of name in actor.json keeps the same actor.",
+    "actorId": "AHjBUqKbddq21zkhy",
     "seoTitle": "Instahyre Jobs Scraper - Experience, Skills & Dates",
     "seoDescription": "Scrape Instahyre jobs by skill, city and experience, newest first: posting date, experience range, skills, headcount and stipend. No login or API key.",
     "exampleRunInput": {
