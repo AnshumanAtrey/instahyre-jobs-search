@@ -1,0 +1,271 @@
+{
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor; the account's cap of 100 public tasks may stop some (manager/CLAUDE.md traps). inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json.",
+    "options": {
+        "build": "latest",
+        "memoryMbytes": 512,
+        "timeoutSecs": 3600
+    },
+    "tasks": [
+        {
+            "name": "instahyre-jobs-last-24-hours",
+            "title": "Find the newest Instahyre jobs posted in the last 24 hours",
+            "description": "Get the 100 newest jobs posted on Instahyre in the last day, with company, city, experience range, skills and link. The date is read from each job page, since Instahyre shows it nowhere else. Set Number of jobs to 0 to get every one, and schedule it daily for a fresh feed.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "24 hours",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "New Instahyre Jobs in the Last 24 Hours",
+            "seoDescription": "The newest jobs posted on Instahyre in the last day, with company, city, experience range, skills and link. Run it daily for a fresh India tech job feed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "experienceYears",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "python-developer-jobs-bangalore-instahyre",
+            "title": "Find Python developer jobs in Bangalore on Instahyre",
+            "description": "Get the newest Python developer jobs in Bangalore (Bengaluru) on Instahyre, with the experience range, skills, company size, posting date and link.",
+            "input": {
+                "searchTerms": [
+                    "python developer"
+                ],
+                "location": [
+                    "Bangalore"
+                ],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Python Developer Jobs in Bangalore on Instahyre",
+            "seoDescription": "The newest Python developer jobs in Bangalore on Instahyre, with experience range, skills, company size, posting date and link. No login.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "experienceYears",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "remote-jobs-instahyre",
+            "title": "Find remote and work from home jobs on Instahyre",
+            "description": "Get the newest Work From Home jobs on Instahyre, with the company, experience range, skills, posting date and link.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [
+                    "remote"
+                ],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Remote and Work From Home Jobs on Instahyre",
+            "seoDescription": "Instahyre's newest Work From Home jobs in India, with company, experience range, skills, posting date and link. No login needed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "fresher-jobs-instahyre",
+            "title": "Find jobs for freshers on Instahyre",
+            "description": "Get the newest jobs on Instahyre that are open to candidates with no experience (0 years), with the company, city, skills, posting date and link.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "experienceYears": 0,
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Fresher Jobs on Instahyre, Newest First",
+            "seoDescription": "Jobs on Instahyre open to freshers with 0 years of experience, newest first, with company, city, skills and link. No login needed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "experienceYears",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "data-analyst-jobs-instahyre",
+            "title": "Find data analyst jobs on Instahyre",
+            "description": "Get the newest data analyst jobs on Instahyre from every company, with the city, experience range, skills, posting date and link.",
+            "input": {
+                "searchTerms": [
+                    "data analyst"
+                ],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Data Analyst Jobs on Instahyre, Newest First",
+            "seoDescription": "The newest data analyst jobs on Instahyre across India, with city, experience range, skills, posting date and link. No login needed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "experienceYears",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "startup-jobs-instahyre",
+            "title": "Find startup jobs on Instahyre",
+            "description": "Get the newest jobs at small companies (up to 50 people, mostly startups) on Instahyre, with the founding year, city, experience range, skills and link.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [
+                    "small"
+                ],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Startup Jobs on Instahyre, Newest First",
+            "seoDescription": "The newest jobs at startups and small companies on Instahyre, with founding year, city, experience range, skills and link. No login.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "companySize",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "instahyre-internships-with-stipend",
+            "title": "Find internships on Instahyre with the stipend",
+            "description": "Get the internships listed on Instahyre with the monthly stipend when the company shows it, the length in months, the start date, city and link.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [
+                    "intern"
+                ],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Instahyre Internships With Stipend",
+            "seoDescription": "Internships listed on Instahyre with the monthly stipend when shown, length, start date, city and link. Newest first, no login needed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "employmentType",
+                "maxJobs"
+            ],
+            "datasetView": "details"
+        },
+        {
+            "name": "instahyre-jobs-with-company-ratings",
+            "title": "Get Instahyre jobs with company details and Glassdoor ratings",
+            "description": "Get the newest Instahyre jobs with the full description and each company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings when Instahyre shows them.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": true,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Instahyre Jobs With Company Ratings and Details",
+            "seoDescription": "Newest Instahyre jobs with full description and the company's industry, website, LinkedIn, tech stack and Glassdoor ratings. Clean JSON.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "maxJobs",
+                "includeDetails"
+            ],
+            "datasetView": "companies"
+        },
+        {
+            "name": "check-instahyre-job-links",
+            "title": "Check whether Instahyre job links are still open",
+            "description": "Paste Instahyre job links and each comes back open, closed or not found, with the job, its experience range and posting date when it is open.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "companySize": [],
+                "companies": [],
+                "jobUrls": [
+                    "https://www.instahyre.com/job-447415-senior-data-engineer-at-the-walt-disney-company-bangalore/"
+                ]
+            },
+            "seoTitle": "Check if Instahyre Job Links Are Still Open",
+            "seoDescription": "Paste Instahyre job links and see which are open, closed or gone, with experience range and posting date for open ones. No login needed.",
+            "inputSchemaFields": [
+                "jobUrls"
+            ],
+            "datasetView": "jobs"
+        }
+    ]
+}

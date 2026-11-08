@@ -1,0 +1,718 @@
+{
+    "actorSpecification": 1,
+    "name": "instahyre-jobs-search",
+    "title": "Instahyre Jobs Scraper & API - Last 24 Hours, India Tech Jobs",
+    "description": "Instahyre jobs scraper and API for India tech jobs: search by skill, city and experience, newest first, with posting date, experience range, skills and company size on every row. Reads instahyre.com live, no login: Bengaluru, Mumbai, Delhi NCR, remote, freshers, internships.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "categories": [
+        "JOBS",
+        "LEAD_GENERATION",
+        "OPEN_SOURCE"
+    ],
+    "input": "./INPUT_SCHEMA.json",
+    "output": "./output_schema.json",
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md",
+    "minMemoryMbytes": 256,
+    "maxMemoryMbytes": 2048,
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Instahyre jobs",
+            "description": "One row per job, newest first: title, company, city, experience range, skills, job category, posting date and link, with the company's headcount and founding year; with details on, also the description and the company's industry, website, LinkedIn, tech stack and Glassdoor ratings. The run summary is the OUTPUT record, not a row.",
+            "fields": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job title (title)",
+                        "description": "The job title as the company wrote it on Instahyre.",
+                        "example": "Senior Data Engineer"
+                    },
+                    "company": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company name (company)",
+                        "description": "The hiring company, as Instahyre names it.",
+                        "example": "The Walt Disney Company"
+                    },
+                    "location": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Main city (location)",
+                        "description": "The first place Instahyre lists for the job: a city such as Bangalore, or Work From Home for a remote job.",
+                        "example": "Bangalore"
+                    },
+                    "otherLocations": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Other cities (otherLocations)",
+                        "description": "Every other place Instahyre lists for the job.",
+                        "example": [
+                            "Chennai",
+                            "Pune"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "workType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Remote or office (workType)",
+                        "description": "remote when Instahyre lists the job as Work From Home, else onsite. Instahyre marks no job hybrid.",
+                        "example": "onsite"
+                    },
+                    "employmentType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job type (employmentType)",
+                        "description": "full-time for a job, intern for an internship: the only two kinds Instahyre lists.",
+                        "example": "full-time"
+                    },
+                    "department": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job category (department)",
+                        "description": "Instahyre's category for the job, such as Software Engineering, Sales or Marketing.",
+                        "example": "Software Engineering"
+                    },
+                    "salary": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Internship stipend (salary)",
+                        "description": "An internship's monthly stipend in rupees, when the company shows it. Instahyre shows no pay for full-time jobs.",
+                        "example": "INR 25,000 a month"
+                    },
+                    "postedAt": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Posted on (postedAt)",
+                        "description": "The day the job was posted on Instahyre (YYYY-MM-DD), from the job's own page: Instahyre shows it nowhere else.",
+                        "example": "2026-11-07"
+                    },
+                    "jobUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job link (jobUrl)",
+                        "description": "The job's page on Instahyre.",
+                        "example": "https://www.instahyre.com/job-447415-senior-data-engineer-at-the-walt-disney-company-bangalore/"
+                    },
+                    "applyUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Apply link (applyUrl)",
+                        "description": "Where to apply: the job's page, whose Apply button needs an Instahyre account. Empty for a checked link that is closed or not found.",
+                        "example": "https://www.instahyre.com/job-447415-senior-data-engineer-at-the-walt-disney-company-bangalore/"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Still open? (status)",
+                        "description": "open for every search result (read live during the run). For a checked link: open, closed (Instahyre no longer shows the job) or not found (no job with that number).",
+                        "example": "open"
+                    },
+                    "platform": {
+                        "type": "string",
+                        "title": "Job platform (platform)",
+                        "description": "Where the job came from: always instahyre here.",
+                        "example": "instahyre"
+                    },
+                    "companySlug": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company page name (companySlug)",
+                        "description": "The name in the company's Instahyre address, as in zomato for instahyre.com/jobs-at-zomato. With full details on.",
+                        "example": "the-walt-disney-company"
+                    },
+                    "companyWebsite": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company website (companyWebsite)",
+                        "description": "The company's own website, from its Instahyre page. With full details on.",
+                        "example": "https://www.disneycareers.com/en"
+                    },
+                    "jobId": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job ID (jobId)",
+                        "description": "Instahyre's number for the job, the number in its link. Higher numbers were posted later.",
+                        "example": "447415"
+                    },
+                    "checkedAt": {
+                        "type": "string",
+                        "title": "Checked at (checkedAt)",
+                        "description": "When the run read the job, in UTC.",
+                        "example": "2026-11-08T01:40:12+00:00"
+                    },
+                    "experienceMin": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Experience from (experienceMin)",
+                        "description": "The fewest years of experience the job asks for. 0 means freshers can apply.",
+                        "example": 2
+                    },
+                    "experienceMax": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Experience up to (experienceMax)",
+                        "description": "The most years of experience the job asks for.",
+                        "example": 4
+                    },
+                    "skills": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Skills asked (skills)",
+                        "description": "The skills Instahyre tags the job with; a search word also matches these.",
+                        "example": [
+                            "PySpark",
+                            "SQL",
+                            "Snowflake"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "jobFunctions": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Job functions (jobFunctions)",
+                        "description": "Instahyre's functions for the job inside its category, such as Data Engineering / DWH / ETL.",
+                        "example": [
+                            "Data Engineering / DWH / ETL"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "companyEmployees": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Headcount (companyEmployees)",
+                        "description": "The company's headcount band on Instahyre: 0-10, 10-50, 50-200, 200-500, 500-1000 or 1000+.",
+                        "example": "1000+"
+                    },
+                    "companySize": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company size (companySize)",
+                        "description": "small (up to 50 employees), medium (50 to 200) or large (over 200), from the headcount band.",
+                        "example": "large"
+                    },
+                    "companyFounded": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Founded in (companyFounded)",
+                        "description": "The year the company was founded, as it told Instahyre.",
+                        "example": 1923
+                    },
+                    "companyTagline": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company tagline (companyTagline)",
+                        "description": "The company's one-line pitch on Instahyre.",
+                        "example": "Be part of the story"
+                    },
+                    "companyLogo": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company logo (companyLogo)",
+                        "description": "The company's logo image on Instahyre.",
+                        "example": "https://media.instahyre.com/images/profile/base/employer/54291/7c148374b4/the_walt_disney_company_logo.webp"
+                    },
+                    "relocationOk": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ],
+                        "title": "Other cities OK? (relocationOk)",
+                        "description": "true when the company also considers candidates who live in another city.",
+                        "example": false
+                    },
+                    "agencyName": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Posted by agency (agencyName)",
+                        "description": "The recruiting agency that posted the job for the company, when it was not posted by the company itself.",
+                        "example": "Zyoin"
+                    },
+                    "internshipMonths": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Months long (internshipMonths)",
+                        "description": "An internship's length in months.",
+                        "example": 6
+                    },
+                    "internshipStart": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Starts on (internshipStart)",
+                        "description": "An internship's start date (YYYY-MM-DD).",
+                        "example": "2026-11-16"
+                    },
+                    "description": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job description (description)",
+                        "description": "The job description as plain text, with full details on.",
+                        "example": "Requirements:\n3+ years of relevant data engineering experience."
+                    },
+                    "descriptionHtml": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Description as HTML (descriptionHtml)",
+                        "description": "The job description as Instahyre shows it, in HTML, with full details on.",
+                        "example": "<p><strong>Requirements: </strong></p><ul><li>3+ years of relevant data engineering experience.</li></ul>"
+                    },
+                    "salaryMin": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Lowest pay (salaryMin)",
+                        "description": "With full details on: an internship's monthly stipend as a number.",
+                        "example": 25000
+                    },
+                    "salaryMax": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Highest pay (salaryMax)",
+                        "description": "With full details on: an internship's monthly stipend as a number.",
+                        "example": 25000
+                    },
+                    "salaryCurrency": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay currency (salaryCurrency)",
+                        "description": "With full details on: INR when a stipend is shown.",
+                        "example": "INR"
+                    },
+                    "salaryPeriod": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay period (salaryPeriod)",
+                        "description": "With full details on: month when a stipend is shown.",
+                        "example": "month"
+                    },
+                    "city": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job city (city)",
+                        "description": "With full details on: the first city of the job.",
+                        "example": "Bangalore"
+                    },
+                    "region": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "State (region)",
+                        "description": "With full details on: the Indian state of the first city, from Instahyre's own list of places.",
+                        "example": "Karnataka"
+                    },
+                    "country": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job country (country)",
+                        "description": "With full details on: the country of the first place.",
+                        "example": "India"
+                    },
+                    "countryCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Country code (countryCode)",
+                        "description": "With full details on: the two-letter code of the country.",
+                        "example": "IN"
+                    },
+                    "companyIndustry": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Industry (companyIndustry)",
+                        "description": "With full details on: the company's industry on Instahyre.",
+                        "example": "Media / Entertainment"
+                    },
+                    "companyLinkedin": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "LinkedIn page (companyLinkedin)",
+                        "description": "With full details on: the company's LinkedIn page.",
+                        "example": "https://www.linkedin.com/company/the-walt-disney-company/"
+                    },
+                    "companyTechStack": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Tech stack (companyTechStack)",
+                        "description": "With full details on: the tools the company lists on Instahyre.",
+                        "example": [
+                            "Python",
+                            "Snowflake",
+                            "Tableau"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "companyBenefits": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Benefits (companyBenefits)",
+                        "description": "With full details on: the benefits the company lists on Instahyre.",
+                        "example": [
+                            "Flexible work",
+                            "Healthcare insurance"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "companyRating": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Glassdoor rating (companyRating)",
+                        "description": "With full details on: the company's overall Glassdoor rating (1 to 5) as Instahyre shows it, when it does.",
+                        "example": 4.1
+                    },
+                    "companyRatings": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "title": "All ratings (companyRatings)",
+                        "description": "With full details on: the Glassdoor scores Instahyre shows (1 to 5): overall, workLifeBalance, salaryAndBenefits, culture, careerGrowth, diversity, recommendToFriend.",
+                        "example": {
+                            "overall": 4.1,
+                            "workLifeBalance": 3.9,
+                            "culture": 4.0
+                        }
+                    },
+                    "companyPage": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company page (companyPage)",
+                        "description": "With full details on: the company's page on Instahyre, with all its open jobs.",
+                        "example": "https://www.instahyre.com/jobs-at-the-walt-disney-company/"
+                    }
+                }
+            },
+            "views": {
+                "jobs": {
+                    "title": "Jobs",
+                    "description": "One row per job, newest first: title, company, city, experience asked, skills, posting date and link.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "location",
+                            "experienceMin",
+                            "experienceMax",
+                            "skills",
+                            "postedAt",
+                            "companySize",
+                            "jobUrl"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "location": {
+                                "label": "Main city (location)",
+                                "format": "text"
+                            },
+                            "experienceMin": {
+                                "label": "Experience from (experienceMin)",
+                                "format": "number"
+                            },
+                            "experienceMax": {
+                                "label": "Experience up to (experienceMax)",
+                                "format": "number"
+                            },
+                            "skills": {
+                                "label": "Skills asked (skills)",
+                                "format": "array"
+                            },
+                            "postedAt": {
+                                "label": "Posted on (postedAt)",
+                                "format": "date"
+                            },
+                            "companySize": {
+                                "label": "Company size (companySize)",
+                                "format": "text"
+                            },
+                            "jobUrl": {
+                                "label": "Job link (jobUrl)",
+                                "format": "link"
+                            }
+                        }
+                    }
+                },
+                "details": {
+                    "title": "Details",
+                    "description": "The description, category, functions, job type, stipend, agency and every other field of each job.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "description",
+                            "department",
+                            "jobFunctions",
+                            "employmentType",
+                            "workType",
+                            "salary",
+                            "otherLocations",
+                            "region",
+                            "relocationOk",
+                            "agencyName",
+                            "internshipMonths",
+                            "internshipStart",
+                            "applyUrl",
+                            "jobId",
+                            "status",
+                            "checkedAt"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "description": {
+                                "label": "Job description (description)",
+                                "format": "text"
+                            },
+                            "department": {
+                                "label": "Job category (department)",
+                                "format": "text"
+                            },
+                            "jobFunctions": {
+                                "label": "Job functions (jobFunctions)",
+                                "format": "array"
+                            },
+                            "employmentType": {
+                                "label": "Job type (employmentType)",
+                                "format": "text"
+                            },
+                            "workType": {
+                                "label": "Remote or office (workType)",
+                                "format": "text"
+                            },
+                            "salary": {
+                                "label": "Internship stipend (salary)",
+                                "format": "text"
+                            },
+                            "otherLocations": {
+                                "label": "Other cities (otherLocations)",
+                                "format": "array"
+                            },
+                            "region": {
+                                "label": "State (region)",
+                                "format": "text"
+                            },
+                            "relocationOk": {
+                                "label": "Other cities OK? (relocationOk)",
+                                "format": "boolean"
+                            },
+                            "agencyName": {
+                                "label": "Posted by agency (agencyName)",
+                                "format": "text"
+                            },
+                            "internshipMonths": {
+                                "label": "Months long (internshipMonths)",
+                                "format": "number"
+                            },
+                            "internshipStart": {
+                                "label": "Starts on (internshipStart)",
+                                "format": "text"
+                            },
+                            "applyUrl": {
+                                "label": "Apply link (applyUrl)",
+                                "format": "link"
+                            },
+                            "jobId": {
+                                "label": "Job ID (jobId)",
+                                "format": "text"
+                            },
+                            "status": {
+                                "label": "Still open? (status)",
+                                "format": "text"
+                            },
+                            "checkedAt": {
+                                "label": "Checked at (checkedAt)",
+                                "format": "date"
+                            }
+                        }
+                    }
+                },
+                "companies": {
+                    "title": "Companies",
+                    "description": "Who is hiring: each job with its company's headcount, founding year, industry, Glassdoor rating, website and LinkedIn (industry, rating and links with full details on).",
+                    "transformation": {
+                        "fields": [
+                            "company",
+                            "title",
+                            "companyEmployees",
+                            "companyFounded",
+                            "companyTagline",
+                            "companyIndustry",
+                            "companyRating",
+                            "companyWebsite",
+                            "companyLinkedin",
+                            "companyPage"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "companyEmployees": {
+                                "label": "Headcount (companyEmployees)",
+                                "format": "text"
+                            },
+                            "companyFounded": {
+                                "label": "Founded in (companyFounded)",
+                                "format": "number"
+                            },
+                            "companyTagline": {
+                                "label": "Company tagline (companyTagline)",
+                                "format": "text"
+                            },
+                            "companyIndustry": {
+                                "label": "Industry (companyIndustry)",
+                                "format": "text"
+                            },
+                            "companyRating": {
+                                "label": "Glassdoor rating (companyRating)",
+                                "format": "number"
+                            },
+                            "companyWebsite": {
+                                "label": "Company website (companyWebsite)",
+                                "format": "link"
+                            },
+                            "companyLinkedin": {
+                                "label": "LinkedIn page (companyLinkedin)",
+                                "format": "link"
+                            },
+                            "companyPage": {
+                                "label": "Company page (companyPage)",
+                                "format": "link"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "keyValueStore": {
+            "actorKeyValueStoreSchemaVersion": 1,
+            "title": "Run summary",
+            "description": "The OUTPUT record: how the run read Instahyre (one by one or through its search), how many jobs matched and were saved, the checked links, the notes about how the input was read and the settings used.",
+            "collections": {
+                "summary": {
+                    "title": "Run summary (OUTPUT)",
+                    "description": "Status, message, counts of jobs read, matched and saved, checked links, notes and settings.",
+                    "key": "OUTPUT"
+                }
+            }
+        }
+    }
+}

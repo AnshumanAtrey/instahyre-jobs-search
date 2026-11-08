@@ -1,0 +1,165 @@
+# Instahyre Jobs Scraper & API - Last 24 Hours, India Tech Jobs
+
+> Instahyre jobs scraper and API for India tech jobs: search by skill, city and experience, newest first, with posting date, experience range, skills and company size on every row.
+
+## Summary
+
+Instahyre Jobs Search is an Apify actor that searches the open jobs on Instahyre (instahyre.com), India's curated tech hiring site, and returns one row per job, newest first: title, company, city, experience range in years, skills, job category, posting date and link, with the company's headcount band, founding year and tagline. On 2026-11-08 Instahyre listed 13,453 open jobs at 3,175 companies, such as Accenture, Amazon, Flipkart, Oracle, PwC and hundreds of startups. Instahyre's search shows no posting date and orders jobs by its own score; this actor reads each job's date from its page and orders by it. It reads Instahyre's public JSON and pages live, with no login and no API key. With full details on, it adds the description and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings.
+
+Store: https://apify.com/anshumanatrey/instahyre-jobs-search
+Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
+
+## Key features
+
+- Every open job on Instahyre, read live, newest first by posting date.
+- A posting date on every row (Instahyre shows it only in each job page's markup) and a posted-within filter: 24 hours, 3 days, 7 days, 30 days or any period.
+- Experience range on every row and an experience filter: 3 keeps jobs open to 3 years, 0 finds jobs for freshers.
+- A search word matches the job title or one of Instahyre's skill tags: python is in 177 titles but in 3,264 jobs' titles or skills (2026-11-08).
+- Indian places as people type them: Bengaluru finds Bangalore, Gurugram finds Gurgaon, Delhi NCR, a state finds its cities, Remote finds Work From Home jobs.
+- Company headcount band, founding year and tagline on every row; industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings with full details.
+- Internship stipends in rupees a month, with the internship's length and start date.
+- Job link check: each pasted Instahyre job link comes back open, closed or not found.
+
+## Input keys
+
+- Skills or titles (searchTerms): one per line; a job matches when its title or one of its skill tags has every word.
+- City or state (location): Bangalore, Mumbai, Delhi NCR, Karnataka, Bengaluru; Remote or Work from home asks for remote jobs; India finds every job in India.
+- Experience (experienceYears): your years of experience; only jobs whose range holds them. 0 for freshers.
+- Remote or office (workType): remote (Work From Home) or onsite (a city).
+- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
+- Number of jobs (maxJobs): 100 by default, 0 for every match.
+- Full details (includeDetails): adds the description and the company's industry, website, LinkedIn, tech stack, benefits and Glassdoor ratings.
+- Leave out words (excludeTerms): drops jobs whose title has these words.
+- Job type (employmentType): full-time or intern.
+- Company size (companySize): small (up to 50 people), medium (50 to 200) or large (over 200).
+- Only these companies (companies): company names or a company's Instahyre page.
+- Job links to check (jobUrls): checks links instead of searching.
+
+## Pricing
+
+PAY_PER_EVENT model, platform usage included:
+
+- Job: $0.001 per saved job ($1.00 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.0011 per saved job with full details on ($1.10 per 1,000)
+- Run start: $0.001 per GB of memory, charged by Apify when a run starts, so $0.001 at the default 512 MB
+
+Instahyre Jobs Scraper's Apify Store header, "from $0.80 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.001 a job and $0.0011 with details; SILVER (Scale) pays 10% less, $0.0009 and $0.00099; GOLD (Business) and above pay 20% less, $0.0008 and $0.00088. The run start is a flat fee on every plan.
+
+Typical costs (Free and Starter price, default memory):
+
+- 100 newest jobs: $0.101
+- 100 jobs with full details: $0.111
+- 1,000 jobs: $1.001
+- Every job on Instahyre, 13,453 on 2026-11-08: $13.454
+
+Apify's free $5 monthly credit covers about 4,900 jobs in runs of 100.
+
+## Speed
+
+About a minute and a half for the 100 newest jobs, measured locally on 2026-11-08: the empty form 85 s, python developer in Bangalore 80 s, remote data analyst jobs from the last 7 days 8 s, sales or operations jobs in Mumbai with full details 177 s. Instahyre answers one address 20 searches a minute and about one and a half job answers a second, so runs wait on those limits.
+
+## How to call it
+
+- Apify API: POST https://api.apify.com/v2/acts/anshumanatrey~instahyre-jobs-search/run-sync-get-dataset-items with the input as JSON and the header Authorization: Bearer <APIFY_TOKEN>. It returns the rows and waits up to 300 seconds, so start bigger runs with a client.
+- Python and JavaScript: the apify-client package, actor anshumanatrey/instahyre-jobs-search.
+- n8n: the Apify node, Run an Actor and get dataset. Make: the Apify app's Run an Actor and Get Dataset Items modules.
+- MCP: https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search, signed in with Apify or with Authorization: Bearer <APIFY_TOKEN>.
+
+## When to use
+
+- The user wants jobs from Instahyre, an Instahyre API, or India tech jobs by skill, city and experience.
+- The user wants the newest Instahyre jobs with their posting date, or a daily feed of jobs posted in the last 24 hours.
+- The user wants jobs open to a number of years of experience, or jobs for freshers.
+- The user wants hiring companies in India with their headcount, founding year, industry and Glassdoor ratings.
+- The user wants to check whether Instahyre job links are still open.
+
+## When NOT to use
+
+- The user needs salaries for full-time jobs: Instahyre shows none (only internship stipends).
+- The user needs hybrid jobs: Instahyre marks a job onsite (a city) or remote (Work From Home) only.
+- The user needs jobs from Naukri, LinkedIn or other boards: this actor reads Instahyre only.
+- The user wants only new or changed jobs since the last run without scheduling: getascraper/instahyre-jobs-scraper and memo23/instahyre-jobs-scraper have a change-tracking mode; here, schedule a run with postedWithin set to 24 hours.
+- The user wants the lowest price per job: s_actors/instahyre-jobs-scraper costs $0.000768 a job with its details.
+
+## Sample input
+
+```json
+{
+  "searchTerms": ["python developer"],
+  "location": ["Bangalore"],
+  "experienceYears": 3,
+  "postedWithin": "30 days",
+  "maxJobs": 100
+}
+```
+
+## Sample output (one record)
+
+From a local run of the example input (`{"maxJobs": 100}`) on 2026-11-08: the second newest job on Instahyre that day.
+
+```json
+{
+  "title": "Manager, Application Software Engineering",
+  "company": "Oracle",
+  "location": "Hyderabad",
+  "otherLocations": [],
+  "workType": "onsite",
+  "employmentType": "full-time",
+  "department": "Software Engineering",
+  "salary": null,
+  "postedAt": "2026-11-07",
+  "jobUrl": "https://www.instahyre.com/job-450563-manager-application-software-engineering-at-oracle-hyderabad/",
+  "applyUrl": "https://www.instahyre.com/job-450563-manager-application-software-engineering-at-oracle-hyderabad/",
+  "status": "open",
+  "platform": "instahyre",
+  "companySlug": null,
+  "companyWebsite": null,
+  "jobId": "450563",
+  "checkedAt": "2026-11-08T01:47:07+00:00",
+  "experienceMin": 9,
+  "experienceMax": 13,
+  "skills": ["Angular", "C#", "Java", "JavaScript", "React", "TypeScript", "Vue"],
+  "jobFunctions": ["Engineering Management", "Full-Stack Development", "Other Software Development"],
+  "companyEmployees": "1000+",
+  "companySize": "large",
+  "companyFounded": 1982,
+  "companyTagline": "Create the future with us",
+  "companyLogo": "https://media.instahyre.com/images/profile/base/employer/1532/70ec221bfd/oracle_logo.webp",
+  "relocationOk": true,
+  "agencyName": null,
+  "internshipMonths": null,
+  "internshipStart": null
+}
+```
+
+## Differentiators vs alternatives
+
+- vs getascraper/instahyre-jobs-scraper ($0.00105 per job, $0.00115 with its details, 326 users in 30 days): no posting date and experience only with its details; this actor gives the date and the experience range on every row at $0.001, and orders by posting date.
+- vs s_actors/instahyre-jobs-scraper ($0.000768 per job with its details): also dates every job and shows Glassdoor ratings, at a lower price; this actor adds skill-tag matching, Indian place names and states, internship stipends and the job link check.
+- vs memo23/instahyre-jobs-scraper ($0.0015 per job, $0.003 with its details): posting dates and experience only with its paid details; this actor gives both on every row at $0.001.
+
+## Sibling actors
+
+- Greenhouse Jobs Scraper (https://apify.com/anshumanatrey/greenhouse-jobs-search): Jobs from every company on Greenhouse, searched live
+- Lever Jobs Scraper (https://apify.com/anshumanatrey/lever-jobs-search): Jobs from 2,300+ companies on Lever (jobs.lever.co), searched live
+- Workday Jobs Scraper (https://apify.com/anshumanatrey/workday-job-search): Jobs from every company on Workday (myworkdayjobs.com), searched live
+- Ashby Jobs Scraper (https://apify.com/anshumanatrey/ashby-jobs-search): Jobs from every company on Ashby (jobs.ashbyhq.com), searched live
+- SmartRecruiters Jobs Scraper (https://apify.com/anshumanatrey/smartrecruiters-jobs-search): Jobs from 2,900+ companies on SmartRecruiters, searched live
+- Workable Jobs Scraper (https://apify.com/anshumanatrey/workable-job-search): Jobs from every company on Workable, in one search
+- Cornerstone Jobs Scraper (https://apify.com/anshumanatrey/cornerstone-jobs-search): Jobs from every company on Cornerstone (csod.com), searched live
+- Deel Jobs Scraper (https://apify.com/anshumanatrey/deel-jobs-search): Jobs from every company on Deel ATS (jobs.deel.com), with pay
+
+## Documentation
+
+- Apify Store: https://apify.com/anshumanatrey/instahyre-jobs-search
+- GitHub repo: https://github.com/AnshumanAtrey/instahyre-jobs-search
+- Issues / feedback: GitHub Issues on the above repo
+- License: MIT
+
+## Maintainer
+
+Anshuman Atrey (https://github.com/AnshumanAtrey), who publishes a portfolio of data and OSINT actors on Apify Store. Feature requests and bugs: LinkedIn (https://linkedin.com/in/anshumanatrey, fastest), GitHub issues, or atrey.dev.
+
+## Last updated
+
+2026-11-08
