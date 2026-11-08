@@ -15,7 +15,7 @@
     },
     "defaultRunOptions$comment": "Default 512 MB, measured on Apify on 2026-11-08: the example input took 215 s at 512 MB (0.030 CU), 207 s at 1,024 MB (0.057 CU) and 134 s at 2,048 MB (0.075 CU; its walk read 40 fewer job numbers). Every run peaked at 62 to 107 MB with about 1% CPU: runs wait on Instahyre's limits (20 searches a minute, about 1.5 job answers a second), so more memory costs more per run and buys no speed. Timeout 3600 s: the 500-job run took 970 s.",
     "pricing": {
-        "$comment": "2026-11-08, by the scratch price_ladder.py. Owner's rule of 2026-11-08 (BRIEF-3 section 3): cost plus a markup (0.8 x price - cost) / cost of 150/140/125/110/100/100% on FREE/BRONZE/SILVER/GOLD/PLATINUM/DIAMOND, at each tier's own unit prices (https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md; PLATINUM and DIAMOND at GOLD's), prices rounded up to two figures. Cost from 10 Apify runs of 2026-11-08 at 512 MB: $0.0003473 a run, $0.000058293 a job, $0.000072905 a job with details (FREE unit prices). Prices FREE/BRONZE/SILVER/GOLD/PLATINUM/DIAMOND: job $0.00019/$0.00018/$0.00014/$0.00011/$0.000097/$0.000097; job-details $0.00023/$0.00022/$0.00017/$0.00013/$0.00013/$0.00013. Run start $0.013 per GB, flat: 150% over the fixed cost would be $0.0011; raised so every measured run clears 100% at every tier (lowest: 7lmselRQcDdCGmbvT on BRONZE). Runs: hN9l523FgnpYsgibB, zrHZ6hmguftOrRm27, NO3n4JfELTxqd5gFl, XvwIwjEEIbVW41h81, UIKQMzPUElNcBkx5d, j4UmMtiKdaWhBfr82, 2izbM3NNZIP4PphHP, l8lSf5A19mFcG1bYK, 7lmselRQcDdCGmbvT, kTqHHctpiu4mg5zr6. House rule for comparison (SEO.md 16, 5-15% under getascraper~instahyre-jobs-scraper (321 users in 30 days; its record of 2026-08-26; GET /v2/acts/getascraper~instahyre-jobs-scraper on 2026-11-08)): job $0.0009/$0.0009/$0.00081/$0.00072, job-details $0.00099/$0.00099/$0.000891/$0.000792, start $0.001. apply true: the first set, applied while the actor has no live pricing. isPublic stays false until the owner's check.",
+        "$comment": "2026-11-08, by the scratch price_ladder.py. Owner's rule of 2026-11-08 (BRIEF-3 section 3): cost plus a markup (0.8 x price - cost) / cost of 150/140/125/110/100/100% on FREE/BRONZE/SILVER/GOLD/PLATINUM/DIAMOND, at each tier's own unit prices (https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md; PLATINUM and DIAMOND at GOLD's), prices rounded up to two figures. Cost from 10 Apify runs of 2026-11-08 at 512 MB: $0.0003473 a run, $0.000058293 a job, $0.000072905 a job with details (FREE unit prices). Prices FREE/BRONZE/SILVER/GOLD/PLATINUM/DIAMOND: job $0.00019/$0.00018/$0.00014/$0.00011/$0.00011/$0.00011; job-details $0.00023/$0.00022/$0.00017/$0.00013/$0.00013/$0.00013. Run start $0.013 per GB, flat: 150% over the fixed cost would be $0.0011; raised so every measured run clears 100% at every tier (lowest: 7lmselRQcDdCGmbvT on BRONZE). Runs: hN9l523FgnpYsgibB, zrHZ6hmguftOrRm27, NO3n4JfELTxqd5gFl, XvwIwjEEIbVW41h81, UIKQMzPUElNcBkx5d, j4UmMtiKdaWhBfr82, 2izbM3NNZIP4PphHP, l8lSf5A19mFcG1bYK, 7lmselRQcDdCGmbvT, kTqHHctpiu4mg5zr6. House rule for comparison (SEO.md 16, 5-15% under getascraper~instahyre-jobs-scraper (321 users in 30 days; its record of 2026-08-26; GET /v2/acts/getascraper~instahyre-jobs-scraper on 2026-11-08)): job $0.0009/$0.0009/$0.00081/$0.00072, job-details $0.00099/$0.00099/$0.000891/$0.000792, start $0.001. apply true: the first set, applied while the actor has no live pricing. isPublic stays false until the owner's check.",
         "apply": true,
         "pricingInfos": [
             {
@@ -41,10 +41,10 @@
                                     "tieredEventPriceUsd": 0.00011
                                 },
                                 "PLATINUM": {
-                                    "tieredEventPriceUsd": 9.7e-05
+                                    "tieredEventPriceUsd": 0.00011
                                 },
                                 "DIAMOND": {
-                                    "tieredEventPriceUsd": 9.7e-05
+                                    "tieredEventPriceUsd": 0.00011
                                 }
                             }
                         },

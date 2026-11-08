@@ -40,7 +40,7 @@ Pay per event: $0.19 per 1,000 jobs, or $0.23 per 1,000 with full details, plus 
 | Job with details | $0.00023 | One saved job with full details on |
 | Run start | $0.013 per GB of memory | Charged by Apify when a run starts: once up to 1 GB, so $0.013 at the default 512 MB. It covers what a run costs before its first job |
 
-Instahyre Jobs Scraper's Apify Store header, "from $0.11 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE users (Apify's Free plan) pay the base price in the table, $0.00019 a job and $0.00023 with details; BRONZE (Starter) pays $0.00018 and $0.00022; SILVER (Scale) $0.00014 and $0.00017; GOLD (Business) $0.00011 and $0.00013; PLATINUM and DIAMOND $0.000097 and $0.00013. The run start is a flat fee on every plan and the header never shows it.
+Instahyre Jobs Scraper's Apify Store header, "from $0.11 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE users (Apify's Free plan) pay the base price in the table, $0.00019 a job and $0.00023 with details; BRONZE (Starter) pays $0.00018 and $0.00022; SILVER (Scale) $0.00014 and $0.00017; GOLD (Business), PLATINUM and DIAMOND $0.00011 and $0.00013. The run start is a flat fee on every plan and the header never shows it.
 
 | Run (Free plan price, default memory) | Cost |
 |---|---|
