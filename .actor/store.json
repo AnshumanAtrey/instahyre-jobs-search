@@ -7,7 +7,7 @@
         "maxJobs": 100
     },
     "actorPermissionLevel": "LIMITED_PERMISSIONS",
-    "isPublic": false,
+    "isPublic": true,
     "defaultRunOptions": {
         "build": "latest",
         "memoryMbytes": 512,
