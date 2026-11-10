@@ -1,5 +1,5 @@
 {
-    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor; the account's cap of 100 public tasks may stop some (manager/CLAUDE.md traps). inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json.",
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor; the account's cap of 100 public tasks may stop some (manager/CLAUDE.md traps). inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json. Tasks marked publish false stay saved but off the Store: the account publishes at most 100 pages across all actors, so each actor keeps 2 or more by its earnings and search traffic (2026-11-11).",
     "options": {
         "build": "latest",
         "memoryMbytes": 512,
@@ -8,6 +8,7 @@
     "tasks": [
         {
             "name": "instahyre-jobs-last-24-hours",
+            "publish": false,
             "title": "Find the newest Instahyre jobs posted in the last 24 hours",
             "description": "Get the 100 newest jobs posted on Instahyre in the last day, with company, city, experience range, skills and link. The date is read from each job page, since Instahyre shows it nowhere else. Set Number of jobs to 0 to get every one, and schedule it daily for a fresh feed.",
             "input": {
@@ -36,6 +37,7 @@
         },
         {
             "name": "python-developer-jobs-bangalore-instahyre",
+            "publish": false,
             "title": "Find Python developer jobs in Bangalore on Instahyre",
             "description": "Get the newest Python developer jobs in Bangalore (Bengaluru) on Instahyre, with the experience range, skills, company size, posting date and link.",
             "input": {
@@ -98,6 +100,7 @@
         },
         {
             "name": "fresher-jobs-instahyre",
+            "publish": false,
             "title": "Find jobs for freshers on Instahyre",
             "description": "Get the newest jobs on Instahyre that are open to candidates with no experience (0 years), with the company, city, skills, posting date and link.",
             "input": {
@@ -127,6 +130,7 @@
         },
         {
             "name": "data-analyst-jobs-instahyre",
+            "publish": false,
             "title": "Find data analyst jobs on Instahyre",
             "description": "Get the newest data analyst jobs on Instahyre from every company, with the city, experience range, skills, posting date and link.",
             "input": {
@@ -157,6 +161,7 @@
         },
         {
             "name": "startup-jobs-instahyre",
+            "publish": false,
             "title": "Find startup jobs on Instahyre",
             "description": "Get the newest jobs at small companies (up to 50 people, mostly startups) on Instahyre, with the founding year, city, experience range, skills and link.",
             "input": {
@@ -187,6 +192,7 @@
         },
         {
             "name": "instahyre-internships-with-stipend",
+            "publish": false,
             "title": "Find internships on Instahyre with the stipend",
             "description": "Get the internships listed on Instahyre with the monthly stipend when the company shows it, the length in months, the start date, city and link.",
             "input": {
@@ -243,6 +249,7 @@
         },
         {
             "name": "check-instahyre-job-links",
+            "publish": false,
             "title": "Check whether Instahyre job links are still open",
             "description": "Paste Instahyre job links and each comes back open, closed or not found, with the job, its experience range and posting date when it is open.",
             "input": {
