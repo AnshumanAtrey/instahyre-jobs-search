@@ -9,6 +9,13 @@ Instahyre Jobs Search is an Apify actor that searches the open jobs on Instahyre
 Store: https://apify.com/anshumanatrey/instahyre-jobs-search
 Source: https://github.com/AnshumanAtrey/instahyre-jobs-search
 
+## Use it from an AI assistant
+
+- Claude (claude.ai and the desktop app): https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Instahyre%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Finstahyre-jobs-search (click Continue, sign in to Apify, Allow).
+- Claude Code: claude mcp add --transport http instahyre-jobs-search "https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search", then /mcp to sign in to Apify.
+- Codex: codex mcp add instahyre-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search", then codex mcp login instahyre-jobs-search.
+- Any other MCP client: https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search, signed in with Apify or Authorization: Bearer <APIFY_TOKEN>.
+
 ## Key features
 
 - Every open job on Instahyre, read live, newest first by posting date.

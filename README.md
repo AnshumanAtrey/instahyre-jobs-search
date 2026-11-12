@@ -4,6 +4,13 @@ Instahyre jobs scraper and API: search India tech jobs on instahyre.com by skill
 
 Use it as an Instahyre API with no login and no API key, an Instahyre job scraper for a daily India job feed, or a hiring tracker for Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai and remote (Work From Home) jobs, from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, with JSON, CSV or Excel export. Available as an [Apify Actor](https://apify.com/anshumanatrey/instahyre-jobs-search). $0.00019 per job, $0.00023 with full details, $0.013 per run start, no login.
 
+**Use it from an AI assistant:**
+
+- **Claude** (claude.ai and the desktop app): [Add Instahyre Jobs to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Instahyre%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Finstahyre-jobs-search), click Continue, sign in to Apify, Allow, and ask in plain words.
+- **Claude Code:** `claude mcp add --transport http instahyre-jobs-search "https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search"`, then run `/mcp` to sign in to Apify.
+- **Codex:** `codex mcp add instahyre-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search"`, then `codex mcp login instahyre-jobs-search`.
+- **Any other MCP client:** `https://mcp.apify.com?tools=anshumanatrey/instahyre-jobs-search`, signed in with Apify or an `Authorization: Bearer <APIFY_TOKEN>` header.
+
 ## What does it do?
 
 - **Searches every open job on Instahyre.** On 2026-11-08 Instahyre listed 13,453 open jobs at 3,175 companies, at employers such as Accenture, Amazon, Flipkart, Myntra, Oracle, Deutsche Telekom Digital Labs, Disney, PwC and hundreds of startups.
